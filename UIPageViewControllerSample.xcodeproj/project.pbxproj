@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C98193CA19E58B6300C541C2 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C98193C919E58B6300C541C2 /* TableViewController.m */; };
 		C9CE03FA19E4380500B1114C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CE03F919E4380500B1114C /* main.m */; };
 		C9CE03FD19E4380500B1114C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CE03FC19E4380500B1114C /* AppDelegate.m */; };
 		C9CE040019E4380500B1114C /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CE03FF19E4380500B1114C /* RootViewController.m */; };
-		C9CE040319E4380500B1114C /* DataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CE040219E4380500B1114C /* DataViewController.m */; };
 		C9CE040619E4380500B1114C /* ModelController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9CE040519E4380500B1114C /* ModelController.m */; };
 		C9CE040919E4380500B1114C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C9CE040719E4380500B1114C /* Main.storyboard */; };
 		C9CE040B19E4380500B1114C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9CE040A19E4380500B1114C /* Images.xcassets */; };
@@ -29,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C98193C819E58B6300C541C2 /* TableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		C98193C919E58B6300C541C2 /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		C9CE03F419E4380500B1114C /* UIPageViewControllerSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIPageViewControllerSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9CE03F819E4380500B1114C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9CE03F919E4380500B1114C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -36,8 +38,6 @@
 		C9CE03FC19E4380500B1114C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C9CE03FE19E4380500B1114C /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
 		C9CE03FF19E4380500B1114C /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
-		C9CE040119E4380500B1114C /* DataViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataViewController.h; sourceTree = "<group>"; };
-		C9CE040219E4380500B1114C /* DataViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataViewController.m; sourceTree = "<group>"; };
 		C9CE040419E4380500B1114C /* ModelController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ModelController.h; sourceTree = "<group>"; };
 		C9CE040519E4380500B1114C /* ModelController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ModelController.m; sourceTree = "<group>"; };
 		C9CE040819E4380500B1114C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -91,10 +91,10 @@
 				C9CE03FC19E4380500B1114C /* AppDelegate.m */,
 				C9CE03FE19E4380500B1114C /* RootViewController.h */,
 				C9CE03FF19E4380500B1114C /* RootViewController.m */,
-				C9CE040119E4380500B1114C /* DataViewController.h */,
-				C9CE040219E4380500B1114C /* DataViewController.m */,
 				C9CE040419E4380500B1114C /* ModelController.h */,
 				C9CE040519E4380500B1114C /* ModelController.m */,
+				C98193C819E58B6300C541C2 /* TableViewController.h */,
+				C98193C919E58B6300C541C2 /* TableViewController.m */,
 				C9CE040719E4380500B1114C /* Main.storyboard */,
 				C9CE040A19E4380500B1114C /* Images.xcassets */,
 				C9CE040C19E4380500B1114C /* LaunchScreen.xib */,
@@ -229,7 +229,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9CE040319E4380500B1114C /* DataViewController.m in Sources */,
+				C98193CA19E58B6300C541C2 /* TableViewController.m in Sources */,
 				C9CE03FD19E4380500B1114C /* AppDelegate.m in Sources */,
 				C9CE040619E4380500B1114C /* ModelController.m in Sources */,
 				C9CE03FA19E4380500B1114C /* main.m in Sources */,
@@ -424,6 +424,7 @@
 				C9CE041F19E4380500B1114C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C9CE042019E4380500B1114C /* Build configuration list for PBXNativeTarget "UIPageViewControllerSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -432,6 +433,7 @@
 				C9CE042219E4380500B1114C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

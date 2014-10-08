@@ -8,9 +8,11 @@
 
 #import "RootViewController.h"
 #import "ModelController.h"
-#import "DataViewController.h"
+//#import "DataViewController.h"
 
 @interface RootViewController ()
+
+@property (strong, nonatomic) UIPageViewController *pageViewController;
 
 @property (readonly, strong, nonatomic) ModelController *modelController;
 
@@ -24,33 +26,33 @@
 {
     [super viewDidLoad];
     
-    // Configure the page view controller and add it as a child view controller.
-    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-                                                                            options:nil];
-    self.pageViewController.delegate = self;
-    
-    DataViewController *startingViewController = [self.modelController startingViewController];
-    NSArray *viewControllers = @[startingViewController];
-    [self.pageViewController setViewControllers:viewControllers
-                                      direction:UIPageViewControllerNavigationDirectionForward
-                                       animated:NO
-                                     completion:nil];
-
-    self.pageViewController.dataSource = self.modelController;
-    
-    
-    [self addChildViewController:self.pageViewController];
-    [self.view addSubview:self.pageViewController.view];
-
-    // Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
-    CGRect pageViewRect = self.view.bounds;
-    self.pageViewController.view.frame = pageViewRect;
-
-    [self.pageViewController didMoveToParentViewController:self];
-
-    // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
-    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+//    // Configure the page view controller and add it as a child view controller.
+//    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
+//                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
+//                                                                            options:nil];
+//    self.pageViewController.delegate = self;
+//    
+//    UIViewController *startingViewController = [self.modelController startingViewController];
+//    NSArray *viewControllers = @[startingViewController];
+//    [self.pageViewController setViewControllers:viewControllers
+//                                      direction:UIPageViewControllerNavigationDirectionForward
+//                                       animated:NO
+//                                     completion:nil];
+//
+//    self.pageViewController.dataSource = self.modelController;
+//    
+//    
+//    [self addChildViewController:self.pageViewController];
+//    [self.view addSubview:self.pageViewController.view];
+//
+//    // Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
+//    CGRect pageViewRect = self.view.bounds;
+//    self.pageViewController.view.frame = pageViewRect;
+//
+//    [self.pageViewController didMoveToParentViewController:self];
+//
+//    // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
+//    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,6 +60,31 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"embedSegueForPageViewController"]) {
+        if (!self.pageViewController) {
+            self.pageViewController = segue.destinationViewController;
+            self.pageViewController.delegate = self;
+            
+            UIViewController *startingViewController = [self.modelController startingViewController];
+            NSArray *viewControllers = @[startingViewController];
+            [self.pageViewController setViewControllers:viewControllers
+                                              direction:UIPageViewControllerNavigationDirectionForward
+                                               animated:NO
+                                             completion:nil];
+            self.title = startingViewController.title;
+            
+            self.pageViewController.dataSource = self.modelController;
+            
+            // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
+            self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
+        }
+    }
+}
+
+#pragma mark -  methods
 
 - (ModelController *)modelController
 {
@@ -98,10 +125,10 @@
        transitionCompleted:(BOOL)completed
 {
     if (completed) {
-        DataViewController *currentViewController = [self.pageViewController.viewControllers lastObject];
-        NSLog(@"%s lastViewController.dataObject:%@", __PRETTY_FUNCTION__, currentViewController.date);
-        
+        UIViewController *currentViewController = [self.pageViewController.viewControllers lastObject];
         [self.modelController setCurrentViewController:currentViewController];
+        
+        self.title = currentViewController.title;
     }
 }
 

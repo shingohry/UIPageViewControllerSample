@@ -7,7 +7,7 @@
 //
 
 #import "ModelController.h"
-#import "DataViewController.h"
+#import "TableViewController.h"
 
 /*
  A controller object that manages a simple model -- a collection of month names.
@@ -58,12 +58,12 @@
 
 #pragma mark - Public
 
-- (void)setCurrentViewController:(DataViewController *)currentViewController
+- (void)setCurrentViewController:(UIViewController *)currentViewController
 {
-    self.currentMonth = currentViewController.date;
+    self.currentMonth = ((TableViewController *)currentViewController).date;
 }
 
-- (DataViewController *)startingViewController
+- (UIViewController *)startingViewController
 {
     return [self viewControllerWithDate:self.currentMonth];
 }
@@ -86,11 +86,11 @@
     self.followingMonth = [calendar dateByAddingComponents:dateComponents toDate:_currentMonth options:0];
 }
 
-- (DataViewController *)viewControllerWithDate:(NSDate *)date
+- (TableViewController *)viewControllerWithDate:(NSDate *)date
 {
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
                                                              bundle:[NSBundle mainBundle]];
-    DataViewController *dataViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"DataViewController"];
+    TableViewController *dataViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"TableViewController"];
     dataViewController.date = date;
     
     return dataViewController;

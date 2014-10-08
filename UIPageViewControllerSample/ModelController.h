@@ -8,16 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@class DataViewController;
-
 /**
  *  PageViewControllerのデータソース
  */
 @interface ModelController : NSObject <UIPageViewControllerDataSource>
 
-- (DataViewController *)startingViewController;
+- (UIViewController *)startingViewController;
 
-- (void)setCurrentViewController:(DataViewController *)currentViewController;
+- (void)setCurrentViewController:(UIViewController *)currentViewController;
 
 @end
 
