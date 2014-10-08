@@ -15,6 +15,10 @@
 
 - (UIViewController *)startingViewController;
 
+- (UIViewController *)previousViewController;
+
+- (UIViewController *)followingViewController;
+
 - (void)setCurrentViewController:(UIViewController *)currentViewController;
 
 @end

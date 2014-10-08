@@ -56,7 +56,18 @@
                             <constraint firstItem="NmY-tQ-xOF" firstAttribute="leading" secondItem="cc6-cB-pgf" secondAttribute="leading" id="vh0-RR-CNA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="txC-D9-t05"/>
+                    <navigationItem key="navigationItem" id="txC-D9-t05">
+                        <barButtonItem key="leftBarButtonItem" title="prev" id="K9w-MJ-SOp">
+                            <connections>
+                                <action selector="previousButtonPressed:" destination="PxF-Ax-wPy" id="qZE-UQ-9PR"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="next" id="l7E-IU-GZA">
+                            <connections>
+                                <action selector="nextButtonPressed:" destination="PxF-Ax-wPy" id="ZH1-4P-Rpx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BPC-vx-IW7" sceneMemberID="firstResponder"/>
             </objects>

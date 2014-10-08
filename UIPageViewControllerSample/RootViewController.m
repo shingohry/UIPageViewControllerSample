@@ -25,34 +25,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-//    // Configure the page view controller and add it as a child view controller.
-//    self.pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll
-//                                                              navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal
-//                                                                            options:nil];
-//    self.pageViewController.delegate = self;
-//    
-//    UIViewController *startingViewController = [self.modelController startingViewController];
-//    NSArray *viewControllers = @[startingViewController];
-//    [self.pageViewController setViewControllers:viewControllers
-//                                      direction:UIPageViewControllerNavigationDirectionForward
-//                                       animated:NO
-//                                     completion:nil];
-//
-//    self.pageViewController.dataSource = self.modelController;
-//    
-//    
-//    [self addChildViewController:self.pageViewController];
-//    [self.view addSubview:self.pageViewController.view];
-//
-//    // Set the page view controller's bounds using an inset rect so that self's view is visible around the edges of the pages.
-//    CGRect pageViewRect = self.view.bounds;
-//    self.pageViewController.view.frame = pageViewRect;
-//
-//    [self.pageViewController didMoveToParentViewController:self];
-//
-//    // Add the page view controller's gesture recognizers to the book view controller's view so that the gestures are started more easily.
-//    self.view.gestureRecognizers = self.pageViewController.gestureRecognizers;
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,6 +66,36 @@
         _modelController = [[ModelController alloc] init];
     }
     return _modelController;
+}
+
+- (IBAction)previousButtonPressed:(id)sender
+{
+    __weak RootViewController *weakSelf = self;
+    UIViewController *previousViewController = [self.modelController previousViewController];
+    [self.pageViewController setViewControllers:@[previousViewController]
+                                      direction:UIPageViewControllerNavigationDirectionReverse
+                                       animated:YES
+                                     completion:^(BOOL finished) {
+                                         UIViewController *currentViewController = [weakSelf.pageViewController.viewControllers lastObject];
+                                         [weakSelf.modelController setCurrentViewController:currentViewController];
+                                         
+                                         weakSelf.title = currentViewController.title;
+                                     }];
+}
+
+- (IBAction)nextButtonPressed:(id)sender
+{
+    __weak RootViewController *weakSelf = self;
+    UIViewController *followingViewController = [self.modelController followingViewController];
+    [self.pageViewController setViewControllers:@[followingViewController]
+                                      direction:UIPageViewControllerNavigationDirectionForward
+                                       animated:YES
+                                     completion:^(BOOL finished) {
+                                         UIViewController *currentViewController = [weakSelf.pageViewController.viewControllers lastObject];
+                                         [weakSelf.modelController setCurrentViewController:currentViewController];
+                                         
+                                         weakSelf.title = currentViewController.title;
+                                     }];
 }
 
 #pragma mark - UIPageViewController delegate methods

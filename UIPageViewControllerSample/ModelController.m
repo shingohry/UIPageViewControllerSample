@@ -47,13 +47,13 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
       viewControllerBeforeViewController:(UIViewController *)viewController
 {
-    return [self viewControllerWithDate:self.previousMonth];
+    return self.previousViewController;
 }
 
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController
        viewControllerAfterViewController:(UIViewController *)viewController
 {
-    return [self viewControllerWithDate:self.followingMonth];
+    return self.followingViewController;
 }
 
 #pragma mark - Public
@@ -66,6 +66,16 @@
 - (UIViewController *)startingViewController
 {
     return [self viewControllerWithDate:self.currentMonth];
+}
+
+- (UIViewController *)previousViewController
+{
+    return [self viewControllerWithDate:self.previousMonth];
+}
+
+- (UIViewController *)followingViewController
+{
+    return [self viewControllerWithDate:self.followingMonth];
 }
 
 #pragma mark - Private
